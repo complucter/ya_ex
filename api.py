@@ -48,8 +48,8 @@ def handle_dialog(req, res):
         res['response'][
             'text'] = 'Привет!'
 
-    if req['request']['original_utterance'].lower() == 'привет':
-        res['response']['text'] = 'Привет, друг!'
+    if 'зарядк' in req['request']['original_utterance'].lower():
+        res['response']['text'] = 'Я могу посоветовать вам много различных упражнений. Скажите какую группу мышц вы хотите тренировать?'
         return
 
     if req['request']['original_utterance'].lower() == 'пока':
