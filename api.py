@@ -43,17 +43,18 @@ def main():
 def handle_dialog(req, res):
     user_id = req['session']['user_id']
 
-    try:
-        if req['session']['new']:
-            res['response'][
-                'text'] = 'Привет!'
-
-        if 'зарядк' in req['request']['original_utterance'].lower():
-            res['response']['text'] = 'Я могу посоветовать вам много различных упражнений. Скажите какую группу мышц вы хотите тренировать?'
+    if req['session']['new']:
+        res['response'][
+            'text'] = 'Привет!'
             return
 
-        if 'отжим' in req['request']['original_utterance'].lower():
-            res['response']['text'] = 'Для начала постарайтесь сделать максимальное колличесвто отжиманий, которое вы можете, затем отбавьте от него 2 повторения. При ежедневном выполнении упражнений, можете прибавлять по одному отжиманию каждую недлею.'
-            return
-    except Exception:
+    if 'зарядк' in req['request']['original_utterance'].lower():
+        res['response']['text'] = 'Я могу посоветовать вам много различных упражнений. Скажите какую группу мышц вы хотите тренировать?'
+        return
+
+    if 'отжим' in req['request']['original_utterance'].lower():
+        res['response']['text'] = 'Для начала постарайтесь сделать максимальное колличесвто отжиманий, которое вы можете, затем отбавьте от него 2 повторения. При ежедневном выполнении упражнений, можете прибавлять по одному отжиманию каждую недлею.'
+        return
+
+    else:
         res['response']['text'] = 'Извините, не понимаю Вас, попробуйте переформулировать ваш вопрос.'
