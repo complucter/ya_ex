@@ -5,7 +5,6 @@ from __future__ import unicode_literals
 # Импортируем модули для работы с JSON и логами.
 import json
 import logging
-
 # Импортируем подмодули Flask для запуска веб-сервиса.
 from flask import Flask, request
 
@@ -55,3 +54,5 @@ def handle_dialog(req, res):
     if 'отжим' in req['request']['original_utterance'].lower():
         res['response']['text'] = 'Для начала постарайтесь сделать максимальное колличесвто отжиманий, которое вы можете, затем отбавьте от него 2 повторения. При ежедневном выполнении упражнений, можете прибавлять по одному отжиманию каждую недлею.'
         return
+
+    res['response']['text'] = 'Извините, не понимаю Вас, попробуйте переформулировать ваш вопрос.'
