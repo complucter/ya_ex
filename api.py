@@ -45,43 +45,8 @@ def handle_dialog(req, res):
     user_id = req['session']['user_id']
 
     if req['session']['new']:
-
-        sessionStorage[user_id] = {
-            'suggests': [
-                "Привет",
-                "Помощь",
-                "Зарядка",
-            ]
-        }
-
         res['response'][
-            'text'] = 'Привет! Я подскажу тебе, какие оценки ты должен получить для' \
-                      ' достижения желаемого среднего балла. Сначала скажи средний' \
-
-
-        res['response']['buttons'] = get_suggests(user_id)
-        return
-
-    if req['request']['original_utterance'].lower() in [
-        'помощь',
-        'что ты умеешь',
-        'что ты умеешь?',
-        'помоги',
-    ]:
-        res['response']['text'] = 'Я подскажу какие оценки тебе нужно получить, чтобы достичь ' \
-                                  'желаемого балла. Просто введи сначала ' \
-                                  'балл, который хочешь получить, а потом свои текущие оценки. ' \
-
-        return
-
-
-    if 'зарадяк' in req['request']['original_utterance'].lower() :
-        res['response']['text'] = 'Сделайте пять отшиманий и 5 приседаний'
-        return
-
-    if req['request']['original_utterance'].lower() == 'сайт':
-        res['response']['text'] = 'Можете перейти по ссылке: mionitsa.pythonanywhere.com/marks_calculator'
-        return
+            'text'] = 'Привет!'
 
     if req['request']['original_utterance'].lower() == 'привет':
         res['response']['text'] = 'Привет, друг!'
@@ -90,15 +55,3 @@ def handle_dialog(req, res):
     if req['request']['original_utterance'].lower() == 'пока':
         res['response']['text'] = 'Миша пока('
         return
-
-
-def get_suggests(user_id):
-    session = sessionStorage[user_id]
-
-    suggests = [
-        {'title': suggest, 'hide': False}
-        for suggest in session['suggests']
-    ]
-
-
-    return suggests
