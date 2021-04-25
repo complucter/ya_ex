@@ -44,16 +44,6 @@ def main():
 def handle_dialog(req, res):
     user_id = req['session']['user_id']
 
-    if req['session']['new']:
-
-        sessionStorage[user_id] = {
-            'suggests': [
-                "Привет",
-                "Помощь",
-                "Зарядка",
-            ]
-        }
-
         res['response'][
             'text'] = 'Привет! Я подскажу тебе, какие оценки ты должен получить для' \
                       ' достижения желаемого среднего балла. Сначала скажи средний' \
@@ -75,7 +65,7 @@ def handle_dialog(req, res):
         return
 
 
-    if 'зарадяк' in req['request']['original_utterance'].lower() :
+    if 'зарадка' in req['request']['original_utterance'].lower() :
         res['response']['text'] = 'Сделайте пять отшиманий и 5 приседаний'
         return
 
@@ -90,15 +80,3 @@ def handle_dialog(req, res):
     if req['request']['original_utterance'].lower() == 'пока':
         res['response']['text'] = 'Миша пока('
         return
-
-
-def get_suggests(user_id):
-    session = sessionStorage[user_id]
-
-    suggests = [
-        {'title': suggest, 'hide': False}
-        for suggest in session['suggests']
-    ]
-
-
-    return suggests
