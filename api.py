@@ -46,7 +46,7 @@ def handle_dialog(req, res):
 
     if req['session']['new']:
         res['response'][
-            'text'] = 'Привет!'
+            'text'] = 'Здравствуйте, я могу посоветовать вам много различных упражнений. Спросите у меня что-нибудь про отжимания, приседания или пресс, например, как правильно делать отжимания.'
         return
 
     if 'зарядк' in req['request']['original_utterance'].lower():
