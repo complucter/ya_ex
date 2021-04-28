@@ -78,8 +78,20 @@ def handle_dialog(req, res):
         res['response']['text'] = 'Чтобы размять нижнюю часть тела, вам подойдут приседания, махи нагами, шаги на месте и выпады.'
         return
 
-    if 'ниж' in req['request']['original_utterance'].lower():
-        res['response']['text'] = 'Чтобы размять нижнюю часть тела, вам подойдут приседания, махи нагами, шаги на месте и выпады.'
+    if 'турник' in req['request']['original_utterance'].lower():
+        res['response']['text'] = 'Научиться подтягиваться на турнике может каждый. Сначала пробуйте подтягиваться с поддержкой, напрмер, ставить ноги на тумбу или просто долго висеть на перекладине.'
+        return
+
+    if 'подтяг' in req['request']['original_utterance'].lower():
+        res['response']['text'] = 'Научиться подтягиваться на турнике может каждый. Сначала пробуйте подтягиваться с поддержкой, напрмер, ставить ноги на тумбу или просто долго висеть на перекладине.'
+        return
+
+    if 'шутк' in req['request']['original_utterance'].lower():
+        res['response']['text'] = random.choice(joke)
+        return
+
+    if 'анек' in req['request']['original_utterance'].lower():
+        res['response']['text'] = random.choice(joke)
         return
 
     if 'прес' in req['request']['original_utterance'].lower():
