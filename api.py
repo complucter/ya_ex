@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 # Импортируем модули для работы с JSON и логами.
 import json
 import logging
-import numpy as np
+from random import choice
 # Импортируем подмодули Flask для запуска веб-сервиса.
 from flask import Flask, request
 
@@ -55,7 +55,7 @@ def handle_dialog(req, res):
 
     if req['session']['new']:
         res['response'][
-            'text'] = np.random.choice(hello)
+            'text'] = choice(hello)
         return
 
     if 'зарядк' in req['request']['original_utterance'].lower():
@@ -96,7 +96,7 @@ def handle_dialog(req, res):
         'что ты умеешь?',
         'помоги',
     ]:
-        res['response']['text'] = np.random.choice(help)
+        res['response']['text'] = choice(help)
         return
     else:
-        res['response']['text'] = np.random.choice(error)
+        res['response']['text'] = choice(error)
