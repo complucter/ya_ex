@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 # Импортируем модули для работы с JSON и логами.
 import json
 import logging
-from random import choice
+import random
 # Импортируем подмодули Flask для запуска веб-сервиса.
 from flask import Flask, request
 
@@ -55,7 +55,7 @@ def handle_dialog(req, res):
 
     if req['session']['new']:
         res['response'][
-            'text'] = choice(hello)
+            'text'] = 'hello'
         return
 
     if 'зарядк' in req['request']['original_utterance'].lower():
