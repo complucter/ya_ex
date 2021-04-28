@@ -55,7 +55,7 @@ def handle_dialog(req, res):
 
     if req['session']['new']:
         res['response'][
-            'text'] = 'Привет!'
+            'text'] = random.choice(hello)
         return
 
     if 'зарядк' in req['request']['original_utterance'].lower():
@@ -114,7 +114,6 @@ def handle_dialog(req, res):
         'что ты умеешь?',
         'помоги',
     ]:
-        res['response']['text'] = 'Я могу посоветовать вам много различных упражнений. Спросите у меня что-нибудь про отжимания, приседания или пресс, например, как правильно тренировать мышцы пресса.'
-        return
+        res['response']['text'] = random.choice(help)
     else:
-        res['response']['text'] = random.choice(['Извините, не знаю как ответить на ваш вопрос .','повторите еще раз '])
+        res['response']['text'] = random.choice(error)
